@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Replication package: Agricultural Innovation Capacity, Creative Destruction, and Food Security under Climate Shocks: Evidence from Developing Countries"
+authors:
+  - family-names: "Bapari"
+    given-names: "Md. Yahia"
+    affiliation: "Department of Economics, Pabna University of Science and Technology"
+version: "1.0.0"
+date-released: "2026-10-07"
+license: MIT
+repository-code: "https://github.com/yahiabapari-bit/agri-innovation-climate-food-security"
+keywords:
+  - agricultural R&D
+  - creative destruction
+  - climate shocks
+  - total factor productivity
+  - food security
+  - developing countries
