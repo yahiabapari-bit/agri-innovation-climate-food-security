@@ -1,4 +1,4 @@
-"""Step 5. Main results (Tables 2-7 and 9, Figures 3-7 inputs).
+"""Step 5. Main results (Tables 2-7 and 9, Figures 3-7 inputs, Section 4.2 significance region and economic magnitude).
 Input : data/panel_v4.csv
 Output: results/main_results.json, results/descriptives.csv
 """
@@ -96,5 +96,25 @@ for grp in [["g_SA", "g_SSA"], ["g_LIC"], ["g_rice", "g_wheat"]]:
         HET[f"base_{grp[0]}|{s}"] = lincom(o, {s: 1})
         for gg_ in grp: HET[f"{gg_}|{s}"] = lincom(o, {s: 1, f"{s}_{gg_}": 1})
 R["heterogeneity"] = HET
+# Section 4.2: significance region of the marginal effects (Figure 4) and economic magnitude
+o = fit(CS, "y_outall", XS)
+K_c = CS.drop_duplicates("iso3").set_index("iso3").K
+grid = np.linspace(-3.5, 2.3, 5801); SIG = {}
+for s in ("Hs", "Ws"):
+    i, j = o["xs"].index(s), o["xs"].index(s + "_K")
+    me = o["b"][i] + o["b"][j] * grid
+    se = np.sqrt(o["V"][i, i] + grid ** 2 * o["V"][j, j] + 2 * grid * o["V"][i, j])
+    sig = grid[(me + 1.96 * se) < 0]
+    thr = float(sig.min()) if len(sig) else None
+    SIG[s] = {"threshold_K_5pct": thr, "countries_above": int((K_c > thr).sum()) if thr is not None else 0, "n_countries": int(len(K_c))}
+R["fig4_significance_region"] = SIG
+R["fig4_K_by_country"] = K_c.round(3).to_dict()
+hbar = float(CS[CS.year.between(2015, 2022)].groupby("year").Hs.mean().mean())
+R["economic_magnitude"] = {"mean_heat_anomaly_2015_2022": hbar,
+                           "implied_growth_loss_at_mean_K": lincom(o, {"Hs": hbar}),
+                           "implied_growth_loss_at_K_plus1": lincom(o, {"Hs": hbar, "Hs_K": hbar}),
+                           "mean_output_growth": float(CS.y_outall.mean())}
+print("Figure 4 significance region:", SIG)
+print("Economic magnitude:", R["economic_magnitude"])
 json.dump(R, open("../results/main_results.json", "w"), indent=1, default=float)
 print("Main coefficients (Table 4, col. 3):", R["t4_c3"]["Hs"], R["t4_c3"]["Hs_K"], R["t4_c3"]["Ws"], R["t4_c3"]["Ws_K"])
