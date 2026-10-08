@@ -1,6 +1,6 @@
 # Replication package
 
-**Agricultural Innovation Capacity, Creative Destruction, and Food Security under Climate Shocks: Evidence from Developing Countries**
+**Does Creative Destruction Insure Against Climate Shocks? Agricultural Innovation Capacity, Productivity and Food Security in Developing Countries**
 
 [Author names] · [Year] · [Journal, once accepted]
 
@@ -61,11 +61,6 @@ Data providers update their series from time to time. Results downloaded on a di
 - Shocks are standardised against each country's 1981–2010 climate. Innovation capacity is measured over 1981–1990; outcomes over 1991–2022.
 - For 15 countries with gaps in 1981–1990, baseline moderators use 1981–1995 averages.
 - The change in cereal import dependency is winsorised at the 1st and 99th percentiles.
-
-## Version history
-
-- **v1.0.1** (8 October 2026): `05_main_analysis.py` also reports the significance region of the marginal effects shown in Figure 4 (threshold values of K and number of countries above them) and the back-of-the-envelope economic magnitude in Section 4.2. All previously reported estimates are unchanged.
-- **v1.0.0** (7 October 2026): first public release.
 
 ## Citation
 
