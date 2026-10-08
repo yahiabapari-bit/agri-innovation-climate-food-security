@@ -1,6 +1,6 @@
 # Replication package
 
-**Does Creative Destruction Insure Against Climate Shocks? Agricultural Innovation Capacity, Productivity and Food Security in Developing Countries**
+**Does Agricultural Innovation Capacity Protect Against Climate Shocks? Creative Destruction, Productivity and Food Security in Developing Countries**
 
 [Author names] · [Year] · [Journal, once accepted]
 
