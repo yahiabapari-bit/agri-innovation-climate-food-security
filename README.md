@@ -6,6 +6,8 @@
 
 This repository reproduces every table and figure in the paper, starting from public data downloaded directly from the original providers. No data are redistributed here; the scripts fetch them.
 
+**Archived copy (DOI):** Mendeley Data, https://doi.org/10.17632/xkypgm2xxf.1
+
 ## Requirements
 
 Python 3.10 or later and an internet connection. Install the packages with
